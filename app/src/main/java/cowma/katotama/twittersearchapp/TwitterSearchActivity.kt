@@ -23,9 +23,12 @@ class TwitterSearchActivity : AppCompatActivity() {
         super.onResume()
         search_button.setOnClickListener {
             Toast.makeText(this, "Keyword:${insert_keyword_Text.text}", Toast.LENGTH_SHORT).show()
+            val keyword = insert_keyword_Text.text
+            val keywordString = keyword.toString()
             //TODO twitter api client execute
             scope.launch {
-                TwitterAPIClient(this@TwitterSearchActivity,tweet_list)
+                val client = TwitterAPIClient(this@TwitterSearchActivity,tweet_list)
+                client.twitterGetTask(keyword.toString())
             }
         }
 

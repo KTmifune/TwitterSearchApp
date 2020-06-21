@@ -16,7 +16,6 @@ class TwitterSearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.twitter_search_activity)
 
-
     }
 
     override fun onResume() {
@@ -24,7 +23,6 @@ class TwitterSearchActivity : AppCompatActivity() {
         search_button.setOnClickListener {
             Toast.makeText(this, "Keyword:${insert_keyword_Text.text}", Toast.LENGTH_SHORT).show()
             val keyword = insert_keyword_Text.text
-            val keywordString = keyword.toString()
             //TODO twitter api client execute
             scope.launch {
                 val client = TwitterAPIClient(this@TwitterSearchActivity,tweet_list)

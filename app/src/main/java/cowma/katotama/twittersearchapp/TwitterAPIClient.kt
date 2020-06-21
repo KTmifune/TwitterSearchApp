@@ -11,13 +11,13 @@ import org.json.JSONObject
 import java.net.URL
 
 
-class TwitterAPIClient(private val context: Context, val listView: ListView)  {
+class TwitterAPIClient(private val context: Context, private val listView: ListView)  {
     private val tag = "TwitterAPIClient"
 
     suspend fun twitterGetTask(vararg keyword: String) {
         try {
 
-            val tweetList<>
+            val tweetList = mutableListOf<TweetModel>()
             val url = "https://api.twitter.com/1.1/search/tweets.json?q=${keyword[0]}&lang=ja"
             val http = HttpUtil()
 
@@ -46,21 +46,25 @@ class TwitterAPIClient(private val context: Context, val listView: ListView)  {
 
                 val imageUrlHttps = data.getJSONObject("user").getString("profile_image_url_https")
 
-                Log.d(tag,"Name:$name Text:$text URl:$imageUrlHttps\n")
+//                Log.d(tag,"Name:$name Text:$text URl:$imageUrlHttps\n")
 
                 //Get image bitmap
                 val imageUrl = URL(imageUrlHttps)
                 val imageIs = imageUrl.openStream()
                 val iconImage = BitmapFactory.decodeStream(imageIs)
 
-
-
+                tweetList.add(TweetModel(userName = name,tweetText = text, profileImage = iconImage))
             }
 
-            // onPostExecuteメソッド
-//            withContext(Dispatchers.Main) {
-//                Toast.makeText(context,"finish",Toast.LENGTH_SHORT).show()
-//            }
+            // onPostExecute
+            withContext(Dispatchers.Main) {
+                Log.d(tag,"tweetList:$tweetList")
+
+                val adapter = TwitterListAdapter(context = context,mTwitterList = tweetList)
+                listView.adapter = adapter
+            }
+
+//
         } catch (e: Exception) {
             // onCancelledメソッド
             Log.e(tag, "Error In TwitterAPIClient", e)

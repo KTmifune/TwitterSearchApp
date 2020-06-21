@@ -2,7 +2,8 @@ package cowma.katotama.twittersearchapp
 
 import android.graphics.Bitmap
 
-data class TwitterModel(
+//TwitterAPIから取得したデータを格納するモデル
+data class TweetModel(
     val userName : String,
     val comment:String,
     val iconImage : Bitmap

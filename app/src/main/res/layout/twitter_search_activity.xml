@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".TwitterSearchActivity">
 
-
     <EditText
         android:id="@+id/insert_keyword_Text"
         android:layout_width="wrap_content"
@@ -30,25 +29,27 @@
         android:id="@+id/search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="20dp"
-        android:background="#03A9F4"
+        android:background="@drawable/button_background"
         android:text="@string/button_text"
-        android:textColor="#FFFFFFFF"
+        android:textColor="@color/searchButtonTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/insert_keyword_Text"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/tweet_list"
-        android:layout_width="400dp"
-        android:layout_height="600dp"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
         android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.497" />
 </androidx.constraintlayout.widget.ConstraintLayout>

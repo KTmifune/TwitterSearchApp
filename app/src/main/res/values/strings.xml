@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">TwitterSearchApp</string>
-    <string name="hint_text">Insert Keyword</string>
-    <string name="button_text">Search</string>
+    <string name="hint_text">検索キーワード</string>
+    <string name="button_text">検索</string>
 </resources>

@@ -2,8 +2,6 @@ package cowma.katotama.twittersearchapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.EditText
 import android.widget.Toast
 import kotlinx.android.synthetic.main.twitter_search_activity.*
 import kotlinx.coroutines.*
@@ -23,7 +21,6 @@ class TwitterSearchActivity : AppCompatActivity() {
         search_button.setOnClickListener {
             Toast.makeText(this, "Keyword:${insert_keyword_Text.text}", Toast.LENGTH_SHORT).show()
             val keyword = insert_keyword_Text.text
-            //TODO twitter api client execute
             scope.launch {
                 val client = TwitterAPIClient(this@TwitterSearchActivity,tweet_list)
                 client.twitterGetTask(keyword.toString())
